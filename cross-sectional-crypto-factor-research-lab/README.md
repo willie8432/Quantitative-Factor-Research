@@ -4,7 +4,7 @@
 
 針對 10 種大市值加密貨幣現貨的三因子策略研究，涵蓋因子假設、單因子測試、因子合成與樣本外績效對比。
 
-## 2. Pipeline
+## 2. Process
 
 ![cross-sectional-crypto-factor-research-lab](img/cross-sectional-crypto-factor.png)
 
@@ -13,7 +13,7 @@
 - **Factor Combination**
 - **Backtesting**
 
-## 3. Setup
+## 3. Data & Setup
 
 | | |
 |---|---|
@@ -44,25 +44,14 @@
 
 
 
-## (WIP) Results
+## (WIP) 5. Result & Future Work
 
-- Every factor's CI includes zero.
-- 僅使用兩個因子（MOM + AMIHUD）執行兩種策略: Rule-based, LightGBM
-- OOS Backtesting (202306 -> 202608, 39-month)
+- 所有因子 CI 信賴區間都包含 0，統計不顯著，無法證明有效力。
+- 僅使用兩個因子（MOM + AMIHUD）執行兩種策略回測: Rule-based, LightGBM，因子數量在結構上限制模型差異化。
+- 策略無法贏過 BTC buy-and-hold。推論，比特幣在樣本期內主導整個市場。
 
-| | BTC buy-and-hold | Rule-based | LightGBM |
-|---|---|---|---|
-| Sharpe | **+0.52** | +0.24 | +0.23 |
-| Max drawdown | **−48.8%** | −64.1% | −52.3% |
-| CAGR | **+27.6%** | +19.0% | +15.8% |
-| Cumulative cost | — | 816.5 bps | 442.6 bps |
-
-**Overfit test.** Rule-based Sharpe fell from +0.93 (IS) to +0.24 (OOS).
-The difference, +0.69, has CI [−0.74, +2.23], so the decline is large but not statistically
-distinguishable from noise at this sample size.
-
-**BTC dominates on all six primary metrics.** Rule-based vs LightGBM Sharpe difference is 0.008, statistically indistinguishable — this confirms a pre-registered prediction about the small universe × top-5 selection structurally constraining model differentiation.
-
-**Rule-based full sample (79 months):** Sharpe +0.6483, total net return +5,355% (54.55× multiple) — carries a strong universe-survivorship caveat.
-
-**IS vs OOS (Rule-based, Metric 8):** IS Sharpe +0.9314, OOS +0.2422, difference +0.6892 with bootstrap CI [−0.7444, +2.2267]. CI includes zero → no statistically significant overfit signal under the strict test, though attribution between overfitting and regime shift (2020–2022 bull vs 2023–2026 mixed) cannot be resolved without a BTC IS/OOS regime control.
+### 未來改善
+- 增加幣數 N，以提升單一因子橫截面統計顯著性。
+- 增加期數 T，以提升因子平均 CI 統計顯著性。
+- 尋找具有超額報酬解釋力之新因子。例如: 山寨幣移除 BTC 影響 (對 BTC 做回歸計算殘差)，
+- 增加因子數，進行模型合成與等權策略之績效比對。
