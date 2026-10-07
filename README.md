@@ -16,7 +16,7 @@
 Taiwanese stock market
 - ⭐ [Taiwan 5 Factor Lab](tw-5-factor-lab/): 使用台股研究 5 個領域因子
 
-(Archived) Crypto: LLM-based 則時策略 
+(Archived) Crypto: LLM-based 擇時策略 
 - [LLM Factor Discovery Lab](llm-factor-discovery-lab/): 使用 LLM 做因子假設與新聞特徵抽取
 - [Cross-Sectional Crypto Factor Research Lab](cross-sectional-crypto-factor-research-lab/): 10 種大市值加密貨幣的三因子橫截面研究
 
