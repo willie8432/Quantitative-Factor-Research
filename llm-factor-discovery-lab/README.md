@@ -8,7 +8,7 @@
 - 驗證: 事前已算出樣本數的偵測門檻，每個因子需要多少觀測才能被證偽，成為可驗算的數字。礙於資料樣本數限制，本專案難以證明典型因子之有效性。後續並無有效因子結果是預測中的。
 - 工程: prompt engineering 與 AWS Bedrock 的實測結論，多項與直覺相反 —— 較長的 prompt 反而便宜、同 pool 加 worker 反而更慢。
 
-## 2. Pipeline
+## 2. Process
 
 ![LLM Factor Discovery Lab Pipeline](img/llm-factor-discovery-lab.png)
 
