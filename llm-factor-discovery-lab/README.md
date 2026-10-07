@@ -13,8 +13,8 @@
 ![LLM Factor Discovery Lab Pipeline](img/llm-factor-discovery-lab.png)
 
 - **Data Acquisition & Alignment**: Binance OHLCV + CryptoNews corpus
-- **Factor Discovery**: LLM (Sonnet 4.6 + Fable 5.1)
-- **Feature Engineering**: LLM (Haiku 4.5) + MiniLM embeddings
+- [**Factor Discovery**](<01_LLM Factor Discovery_v1.md>): LLM (Sonnet 4.6 + Fable 5.1)
+- [**Feature Engineering**](<02_Feature Extraction and Engineering_v1.md>): LLM (Haiku 4.5) + MiniLM embeddings
 - **Factor Computation**
 - **Single-Factor Testing**
 
