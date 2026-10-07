@@ -1,11 +1,13 @@
 # Single Factor Testing
 
-## Goal (WIP)
+## Overview
 
+以 8-10 個 crypto 為橫截面，測試三個金融原理上維度不同的因子：MOM（動能）、IVOL（微結構）、AMIHUD（流動性）。樣本為 2020-01 → 2026-07 共 78 期月頻對齊資料，做單因子測試 (Rank IC、t 值、IR、rolling 6M IC、tercile spread)。
 
+**Conclusion**
 
-## Objective (WIP)
-
+- **三個因子皆無統計顯著的預測力**：IC 信賴區間全部包含 0，|t| 皆 < 1.6，但三者的失效型態不同。
+- MOM、AMIHUD 進入下一階段因子合成；IVOL 停止。
 
 ## Factor Discovery
 

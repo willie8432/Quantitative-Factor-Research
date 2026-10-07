@@ -1,23 +1,26 @@
-# Factor Research Process 
+# 因子研究流程 
 
-![Factor Research Process](img/factor-research-process-all.png)
-
-## Layer
+![Factor Research Process](img/factor-research-process.png)
 
 | Layer | Responsibility |
 |---|---|
-| **Data** | 產生乾淨、時序對齊、無 look-ahead bias 的 panel | 
-| **Factor** | 產生因子，並驗證單一因子的預測力 | 
-| **Portfolio** | 經由 backtesting、Out of Sample (OOS) 測試，把訊號轉成可執行，且扣除成本後仍成立的策略 | 
+| **Data** | 搜集資料，整理成乾淨、時序對齊、無 look-ahead bias 的 panel | 
+| **Factor** | 挖掘、產生因子，並驗證單一因子的預測力 | 
+| **Strategy** | 把因子組合成策略層級訊號，經由 backtesting、Out of Sample (OOS) 測試，判斷與解釋策略績效 | 
 
 
 ## Overview
 
-依照因子研究流程，試做以下 Lab 驗證：
+依照因子研究流程，執行相關 Lab 驗證：
+
+Taiwanese stock market
+- ⭐ [Taiwan 5 Factor Lab](tw-5-factor-lab/): 使用台股研究 5 個領域因子
+
+(Archived) Crypto: LLM-based 則時策略 
 - [LLM Factor Discovery Lab](llm-factor-discovery-lab/): 使用 LLM 做因子假設與新聞特徵抽取
 - [Cross-Sectional Crypto Factor Research Lab](cross-sectional-crypto-factor-research-lab/): 10 種大市值加密貨幣的三因子橫截面研究
 
----
+
 
 ## Layer 1 — Data
 
@@ -74,7 +77,6 @@
 **Output**
 - `Feature matrix`: key 為 `(timestamp, asset)` 的特徵表
 
----
 
 ## Layer 2 — Factor
 
@@ -145,9 +147,7 @@
 - `Factor Efficacy Report`: 每因子的 IC / IR / spread / CI 統計表
 
 
----
-
-## Layer 3 — Portfolio
+## Layer 3 — Strategy
 
 ### 3.1 Factor Combination
 
