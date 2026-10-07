@@ -25,7 +25,7 @@ Taiwanese stock market
 ## Layer 1 — Data
 
 ### 1.1 Data Acquisition / PIT Alignment
-從交易所或是其他外部來源取得原始資料，資料清洗之後做 point-in-time (PIT) 對齊，每一列只包含在該時間點可得的資訊，建立整條 pipeline 唯一事實的資料來源。準確的 PIT 對齊同時可防止後面階段的 look-ahead 偏誤。
+從交易所或是外部來源取得原始資料，資料清洗之後做 point-in-time (PIT) 對齊，每一列只包含在該時間點可得的資訊，建立整條 pipeline 唯一事實的資料來源。準確的 PIT 對齊同時可防止後面階段的 look-ahead 偏誤。
 
 **方法與工具**
 - 範例: Binance REST API (OHLCV)、外部資料來源(如 SPY、on-chain、新聞文本)
@@ -44,22 +44,22 @@ Taiwanese stock market
 
 ### 1.2 Labeling
 
-標註預測目標 y，也就是因子公式要去對齊、要去預測的「答案」。定義想計算的 forward return 與 horizon 的設定。
+標註預測目標 y (通常是報酬)，也就是因子公式要去對齊、要去預測的「答案」。設定 horizon 以及 forward return 等等。
 
 **方法與工具**
-- Forward return 計算: `(price_open(t+h+1) / price_open(t+1))-1`
+- Forward return 計算範例: `(price_open(t+h+1) / price_open(t+1))-1`
 - Horizon 設定與 rebalance frequency 一致
-
 
 **Input**
 - Data Panel (price)
 - rebalance calendar、horizon 表
 
 **Output**
-- `In Sample (IS) label`: key 為 `(timestamp, asset, horizon)`，欄位包含 y = forward return
-- 後續提供給 Factor Mining 模型使用
+- `IS label`、`OOS label`: key 為 `(timestamp, asset, horizon)`，欄位包含 y = forward return
+- IS label 後續提供給 Factor Mining 模型使用、單因子檢定
+- OS lable 後續提通給策略回測使用
 
-> **未來資訊只從 Labeling 一格進入。** 其餘所有格子嚴格只看過去。這讓 look-ahead 稽核變成單點檢查。
+> **未來資訊只從 Labeling 一格進入。** 其餘所有格子嚴格只紀錄 timestamp 以前資訊。這讓 look-ahead 稽核變成單點檢查。
 
 ---
 
@@ -82,7 +82,7 @@ Taiwanese stock market
 
 ### 2.1 Factor Mining
 
-以 label 的目標函數為準，在公式空間中搜尋、產生候選因子。枚舉出人類想不到的因子。可解釋度較低。
+以 label 為目標函數，在公式空間中搜尋、產生候選因子。枚舉出人類想不到的因子。可解釋度較低。
 
 **方法與工具**
 - (WIP) Genetic programming、symbolic regression 等等
@@ -90,7 +90,7 @@ Taiwanese stock market
 
 **Input**
 - `Feature matrix`
-- `IS label`(**只有 in-sample 切片**)
+- `IS Data slice` (只有 `IS label`)
 
 **Output**
 - 候選因子池、factor specification (`Factor Spec`) 
@@ -99,7 +99,7 @@ Taiwanese stock market
 
 ### 2.2 Factor Discovery
 
-從金融原理、機制出發，提出因子假設: 說明為什麼會有訊號，再寫下公式。可解釋性較高。
+從金融原理、機制出發，提出因子假設: 說明為什麼會有訊號，經濟學原理等等。可解釋性較高。
 
 **方法與工具**
 - 使用 LLM 提出假設: 每個假設因子須包含機制說明、time horizon、失效定義等等
@@ -108,7 +108,7 @@ Taiwanese stock market
 **Input**
 - `Feature matrix`
 - 市場結構知識、文獻
-- **不含 label、量化資訊**
+- 不含 label
 
 **Output**
 - 候選因子池、factor specification (`Factor Spec`)
@@ -133,11 +133,10 @@ Taiwanese stock market
 
 ### 2.4 Single-Factor Testing
 
-檢驗每個單一因子的預測力，在投入合成與回測成本之前，先篩掉沒有訊號的因子。
+檢驗每個單一因子的預測力，評估該統計量的顯著性。在投入合成與回測成本之前，先篩掉沒有訊號的因子。
 
 **方法與工具**
-- Rank IC、IC IR、rolling IC 穩定性、Tercile spread、Factor spanning regression
-
+- 範例: Rank IC、IC IR、rolling IC、Tercile spread (十分位 LS)、Factor spanning regression
 
 **Input**
 - `Factor Value`
@@ -151,7 +150,7 @@ Taiwanese stock market
 
 ### 3.1 Factor Combination
 
-把通過的多個因子合成成訊號，並產生預測模型。
+把多個因子合成成訊號，並產生預測策略、預測模型。
 
 **方法與工具**
 - rule-based: 等權、IC 加權
@@ -168,29 +167,29 @@ Taiwanese stock market
 
 ### 3.2 Backtesting
 
-以歷史價格回測此部位交易的結果 (含交易成本)。把訊號轉成可宣稱的報酬。
+考量交易成本，以實際歷史價格回測交易策略。把訊號轉成可宣稱的報酬。
 
 **方法與工具**
-- 成本模型: 手續費 + 滑價 (以 round-trip bps 計)
-- Rebalance 時點與 label horizon 必須一致
+- 成本模型: 手續費 + 賣出證交稅 + 滑價 (bps)
+- Rebalance 時間點與 label horizon 必須一致
 
 **Input**
-- `Portfolio`
+- `Strategy` + benchmark
 - `Data Panel`(價格路徑)
 - 成本參數
 
 **Output**
-- `Performance and Attribution`: Sharpe、MDD、CAGR 等等
+- `Performance and Attribution`: CAGR、Sharpe、MDD、Calmar 等等
 
 ---
 
 ### 3.3 OOS
 
-在 Out-of-Sample (OOS) 上檢驗前面所有決策 (因子選擇、參數、組合方式) 是否只是對 IS 的擬合。本階段不做參數調整。
+在 Out-of-Sample (OOS) 資料上檢驗前面所有決策 (因子選擇、參數、組合方式) 是否只是對 IS 的擬合。這個階段不做參數調整。
 
 **方法與工具**
-- 樣本切片必須在研究開始前就切開並鎖住
-- 比較 IS vs OOS 的 Sharpe 差異
+- OOS 樣本切片在研究開始前就切開並鎖住，不參與前面任何階段
+- 範例: 比較 IS vs OOS 的 Sharpe 差異
 
 **Input**
 - OOS 切片的 `Data Panel`
@@ -202,7 +201,7 @@ Taiwanese stock market
 
 ### 3.4 Go-live Decision (go/no-go)
 
-綜合所有結果決定是否投入實盤。
+綜合所有結果，決定是否投入實盤操作。
 
 **方法與工具**
 - 決策清單:OOS Sharpe 門檻、最大可承載規模、與現有策略的相關性
@@ -227,7 +226,7 @@ Taiwanese stock market
 
 **Input**
 - 實盤成交與部位紀錄
-- 即時 `Factor Value`
+- 即時 `Factor Value`監控
 
 **Output**
 - 監控儀表板、decay 告警
