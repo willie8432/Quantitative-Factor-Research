@@ -6,7 +6,7 @@
 
 ## 2. Pipeline
 
-![cross-sectional-crypto-factor-research-lab](img/cross-sectional-crypto-factor-research.png)
+![cross-sectional-crypto-factor-research-lab](img/cross-sectional-crypto-factor.png)
 
 - **Data Acquisition & Alignment**: 4H bars 轉換為 point-in-time 面板資料。
 - **Single-Factor Testing**: Rank IC, IC IR, Tercile Spread, Rolling 6-month IC, 多變量覆蓋回歸 (multivariate spanning regression)
