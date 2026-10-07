@@ -57,7 +57,7 @@ Taiwanese stock market
 **Output**
 - `IS label`、`OOS label`: key 為 `(timestamp, asset, horizon)`，欄位包含 y = forward return
 - IS label 後續提供給 Factor Mining 模型使用、單因子檢定
-- OS lable 後續提通給策略回測使用
+- OOS label 後續提供給策略回測使用
 
 > **未來資訊只從 Labeling 一格進入。** 其餘所有格子嚴格只紀錄 timestamp 以前資訊。這讓 look-ahead 稽核變成單點檢查。
 
@@ -136,7 +136,7 @@ Taiwanese stock market
 檢驗每個單一因子的預測力，評估該統計量的顯著性。在投入合成與回測成本之前，先篩掉沒有訊號的因子。
 
 **方法與工具**
-- 範例: Rank IC、IC IR、rolling IC、Tercile spread (十分位 LS)、Factor spanning regression
+- 範例: Rank IC、IC IR、rolling IC、Tercile spread (or 十分位 LS)、Factor spanning regression
 
 **Input**
 - `Factor Value`
@@ -161,7 +161,7 @@ Taiwanese stock market
 - 組合參數與部位限制條件
 
 **Output**
-- `Portfolio`: 每期的 target
+- `Strategy`
 
 ---
 
@@ -170,7 +170,7 @@ Taiwanese stock market
 考量交易成本，以實際歷史價格回測交易策略。把訊號轉成可宣稱的報酬。
 
 **方法與工具**
-- 成本模型: 手續費 + 賣出證交稅 + 滑價 (bps)
+- 成本模型: 手續費 + 滑價 + (賣出證交稅) (bps)
 - Rebalance 時間點與 label horizon 必須一致
 
 **Input**
@@ -226,7 +226,7 @@ Taiwanese stock market
 
 **Input**
 - 實盤成交與部位紀錄
-- 即時 `Factor Value`監控
+- 即時 `Factor Value` 監控
 
 **Output**
 - 監控儀表板、decay 告警
