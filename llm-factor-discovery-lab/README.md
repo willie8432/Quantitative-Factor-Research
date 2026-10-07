@@ -43,15 +43,7 @@
 
 進行 Factor Computation、Single-Factor Testing 的七個因子，有 4 個依賴 LLM 抽取的新聞特徵 —— 這是專案的核心差異點。
 
-| ID | Name | Dimension | Direction | Horizon | LLM |
-|---|---|---|:---:|:---:|:---:|
-| f001 | wick_asymmetry_accumulation | technical | + | days | |
-| f002 | vw_close_position_signal | technical | + | days | |
-| f004 | regulatory_jcd_score | news | + | days | V |
-| f005 | novelty_weighted_sentiment | news | + | days | V |
-| f007 | systemic_entity_negative_index | news | **−** | weeks | V |
-| f009 | corr_regime_decoupling_spy | non-traditional | + | weeks | |
-| f014 | unexplained_move_attribution_reversal | behavioral | + | days | V |
+![factor candidate](img/table_candidate_factors.png)
 
 ## 5. Result & Future Work
 

@@ -317,10 +317,7 @@ Step A. prompt 在放入 market 敘述的時候，記得移掉所有定量的數
 
 **全部 15 個因子的  Direction X Horizon 分析**
 
-|  | Days | Weeks |
-|---|---|---|
-| Positive | f001, f002, f004, f005, f008, f010, f013, f014 | f003, f009, f011, f012, f015 |
-| Negative | f006 | f007 |
+![factor direction x horizon](img/table_direction_horizon.png)
 
 代表多數因子策略在預測短期上漲 (short-term long-biased)，若市場短期反轉，大量 positive / days因子會同時 fail。合成之後訊號互相 reinforce 可能過度集中。就像是去賭場全部都只會押「大」。
 
@@ -371,37 +368,27 @@ Criteria 共分成兩種:
 **Curation 結果表**
 | Factor ID | Name | Dimension | Criteria Note | Result |
 |---|---|---|---|---|
-| **f001** | wick_asymmetry_accumulation | technical | fires 每天, 180 天樣本足以做 IC 分析 | ✅ `KEEP` |
-| **f002** | vw_close_position_signal | technical | BTC-specific close mechanics, 10-40 天 | ✅ `KEEP` |
-| **f003** | vol_compression_breakout | technical | Mechanism 最有趣 (BTC leveraged liquidation cascade) 但 fires 極稀 (180 天預期 5-15 events。sample-size feasibility 問題, 非 quality 問題 | ⚠️ `KEEP-CAVEAT` |
-| **f004** | regulatory_jcd_score | news_sentiment | J × C × D 三維乘法比單一 News 資訊 richer, 但 regulatory event 在 180 天內是否夠多需要等下一階段實際測試  | ✅ `KEEP` |
-| **f005** | novelty_weighted_sentiment | news_sentiment | Embedding-based novelty weighting，抓每天真新聞 sentiment，mechanism 獨立於價格，且每天 fires 足夠 | ✅ `KEEP` |
-| **f006** | echo_chamber_reversal | news_sentiment | 與 f005 相同 embedding + sentiment pipeline，兩者在 embedding 品質退化時會**同時失效**; 為避免同源冗餘， curation 選 f005 保留 | ❌ `KILL` |
-| **f007** | systemic_entity_negative_index | news_sentiment | 該 batch 最強概念，BTC infrastructure concentration 真實論述，entity-agnostic sentiment tools | ✅ `KEEP` |
-| **f008** | cme_expiry_phase_signal | non_traditional | 完全依靠  calendar signal (無需 forecasting)，mechanism 清晰但 effect size 小 + 180 天只有 6 個 expiry events | ⚠️ `KEEP-CAVEAT` |
-| **f009** | corr_regime_decoupling_spy | non_traditional | 該 batch 最經濟合理的 factor (mechanism specifies who is driving price),data requirement 極小 (僅 SPY)，testable on 180 天 | ✅ `KEEP` |
-| **f010** | weekend_return_reversal | non_traditional | Simplest + operationally cleanest(零外部依賴)，mechanism 與 equity weekend effect 機制上不同; 但 180 天內只 ~25 個 Monday，sample size 不足以測 | ⚠️ `KEEP-CAVEAT` |
-| **f011** | btc_gold_narrative_transition | non_traditional | 與 f009 partial duplication (共享 SPY correlation component) | ❌ `KILL` |
-| **f012** | addr_price_divergence_14d | on_chain | paid-tier 鏈上資料 | ❌ `KILL` |
-| **f013** | round_number_anchor_regime | behavioral | 該 batch 「最純 behavioral mechanism」(round-number 心理錨定)，但 180 天內只 fire 4-8 次 level approaches | ⚠️ `KEEP-CAVEAT` |
-| **f014** | unexplained_move_attribution_reversal | behavioral | 該 batch 最強 factor，180 天內 conditioning events 夠多；新聞歸因 vs cascade 反轉的 mechanism 明確 | ✅ `KEEP` |
-| **f015** | breakeven_supply_overhang | behavioral | 60 天 lookback 消耗 180 天樣本的 1/3; overlap with f002 | ❌ `KILL` |
+| **f001** | wick_asymmetry_accumulation | technical | fires 每天, 180 天樣本足以做 IC 分析 | `KEEP` |
+| **f002** | vw_close_position_signal | technical | BTC-specific close mechanics, 10-40 天 | `KEEP` |
+| **f003** | vol_compression_breakout | technical | Mechanism 最有趣 (BTC leveraged liquidation cascade) 但 fires 極稀 (180 天預期 5-15 events。sample-size feasibility 問題, 非 quality 問題 | `KEEP-CAVEAT` |
+| **f004** | regulatory_jcd_score | news_sentiment | J × C × D 三維乘法比單一 News 資訊 richer, 但 regulatory event 在 180 天內是否夠多需要等下一階段實際測試  | `KEEP` |
+| **f005** | novelty_weighted_sentiment | news_sentiment | Embedding-based novelty weighting，抓每天真新聞 sentiment，mechanism 獨立於價格，且每天 fires 足夠 | `KEEP` |
+| **f006** | echo_chamber_reversal | news_sentiment | 與 f005 相同 embedding + sentiment pipeline，兩者在 embedding 品質退化時會**同時失效**; 為避免同源冗餘， curation 選 f005 保留 | `KILL` |
+| **f007** | systemic_entity_negative_index | news_sentiment | 該 batch 最強概念，BTC infrastructure concentration 真實論述，entity-agnostic sentiment tools | `KEEP` |
+| **f008** | cme_expiry_phase_signal | non_traditional | 完全依靠  calendar signal (無需 forecasting)，mechanism 清晰但 effect size 小 + 180 天只有 6 個 expiry events | `KEEP-CAVEAT` |
+| **f009** | corr_regime_decoupling_spy | non_traditional | 該 batch 最經濟合理的 factor (mechanism specifies who is driving price),data requirement 極小 (僅 SPY)，testable on 180 天 | `KEEP` |
+| **f010** | weekend_return_reversal | non_traditional | Simplest + operationally cleanest(零外部依賴)，mechanism 與 equity weekend effect 機制上不同; 但 180 天內只 ~25 個 Monday，sample size 不足以測 | `KEEP-CAVEAT` |
+| **f011** | btc_gold_narrative_transition | non_traditional | 與 f009 partial duplication (共享 SPY correlation component) | `KILL` |
+| **f012** | addr_price_divergence_14d | on_chain | paid-tier 鏈上資料 | `KILL` |
+| **f013** | round_number_anchor_regime | behavioral | 該 batch 「最純 behavioral mechanism」(round-number 心理錨定)，但 180 天內只 fire 4-8 次 level approaches | `KEEP-CAVEAT` |
+| **f014** | unexplained_move_attribution_reversal | behavioral | 該 batch 最強 factor，180 天內 conditioning events 夠多；新聞歸因 vs cascade 反轉的 mechanism 明確 | `KEEP` |
+| **f015** | breakeven_supply_overhang | behavioral | 60 天 lookback 消耗 180 天樣本的 1/3; overlap with f002 | `KILL` |
 
 **Result**: 15 factors scored, provisional 7 KEEP + 4 KEEP-CAVEAT + 4 KILL
 
-### 收斂後 ✅ KEEP (7 個因子)
+### 收斂後 KEEP (7 個因子)
 
-
-
-| ID | Dimension | Direction | Horizon |
-|---|---|---|---|
-| f001 wick_asymmetry_accumulation | technical | positive | days |
-| f002 vw_close_position_signal | technical | positive | days |
-| f004 regulatory_jcd_score | news_sentiment | positive | days |
-| f005 novelty_weighted_sentiment | news_sentiment | positive | days |
-| f007 systemic_entity_negative_index | news_sentiment | negative | weeks |
-| f009 corr_regime_decoupling_spy | non_traditional | positive | weeks |
-| f014 unexplained_move_attribution_reversal | behavioral | positive | days |
+![factor candidate](img/table_candidate_factors.png)
  
 **Factor Distribution:**
 - 6 / 7 是 positive direction
