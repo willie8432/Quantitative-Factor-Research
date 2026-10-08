@@ -10,7 +10,9 @@
 
 ## 2. Process
 
-![LLM Factor Discovery Lab Pipeline](img/llm-factor-discovery-lab.png)
+<p align="center">
+  <img src="img/llm-factor-discovery-lab.png" alt="LLM Factor Discovery Lab Pipeline" width="1042">
+</p>
 
 - **Data Acquisition & Alignment**: Binance OHLCV + CryptoNews corpus
 - [**Factor Discovery**](<01_LLM Factor Discovery_v1.md>): LLM (Sonnet 4.6 + Fable 5.1)
@@ -41,7 +43,9 @@
 
 進行 Factor Computation、Single-Factor Testing 的七個因子，有 4 個依賴 LLM 抽取的新聞特徵 —— 這是專案的核心差異點。
 
-![factor candidate](img/table_candidate_factors.png)
+<p align="center">
+  <img src="img/table_candidate_factors.png" alt="factor candidate" width="825">
+</p>
 
 ## 5. Result & Future Work
 

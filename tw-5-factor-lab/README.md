@@ -8,7 +8,9 @@
 
 ## 2. Process
 
-![TW 5 Factor Lab](img/tw-5-factor-lab.png)
+<p align="center">
+  <img src="img/tw-5-factor-lab.png" alt="TW 5 Factor Lab" width="1042">
+</p>
 
 | 報告 | 內容 |
 |---|---|
@@ -31,7 +33,9 @@
 
 ## 4. Factors
 
-![表 1](img/table_factor_variants.png)
+<p align="center">
+  <img src="img/table_factor_variants.png" alt="表 1" width="1040">
+</p>
 
 ## 5. Result & Future Work
 

@@ -44,7 +44,9 @@
 ### 財報日與換股日（Rebalance time） 
 2013 年台股切換法定財報公布日。本專案定義換股日 (rebalance time) 固定為新制法定期限（3/31、5/15、8/14、11/14）之後的第一個交易日；每家公司的財報依實際公告日取用，只使用換股日前一個交易日已公告的版本。2013 年以前的舊制下，這些日期部分公司的財報還沒公布，會使用到較舊的一期。因此，2013 年前的財報類因子（A0、A1、B0、B1）使用資訊較舊。
 
-![rebalance_schedule.png](img/table_rebalance_schedule.png)
+<p align="center">
+  <img src="img/table_rebalance_schedule.png" width="590">
+</p>
 
 > 單因子檢定使用截面排名、LightGBM（LGBM）label 使用報酬排名：排名只比較同一期內的股票，持有期長短不影響。
 > 但 LS 等報酬平均值則包含長短不一的持有期。

@@ -317,7 +317,9 @@ Step A. prompt 在放入 market 敘述的時候，記得移掉所有定量的數
 
 **全部 15 個因子的  Direction X Horizon 分析**
 
-![factor direction x horizon](img/table_direction_horizon.png)
+<p align="center">
+  <img src="img/table_direction_horizon.png" alt="factor direction x horizon" width="800">
+</p>
 
 代表多數因子策略在預測短期上漲 (short-term long-biased)，若市場短期反轉，大量 positive / days因子會同時 fail。合成之後訊號互相 reinforce 可能過度集中。就像是去賭場全部都只會押「大」。
 
@@ -388,7 +390,9 @@ Criteria 共分成兩種:
 
 ### 收斂後 KEEP (7 個因子)
 
-![factor candidate](img/table_candidate_factors.png)
+<p align="center">
+  <img src="img/table_candidate_factors.png" alt="factor candidate" width="825">
+</p>
  
 **Factor Distribution:**
 - 6 / 7 是 positive direction

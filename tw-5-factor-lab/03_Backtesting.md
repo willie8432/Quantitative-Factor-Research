@@ -125,13 +125,17 @@
 ---
 
 ### 3.2 資金累積曲線（對數）與最大回撤
-![OOS 資金累積曲線](img/oos_nav.png)
+<p align="center">
+  <img src="img/oos_nav.png" alt="OOS 資金累積曲線" width="1000">
+</p>
 
 #### 解讀
 - 2018 到 2024 年中，策略主要領先，資金累積速度持續高於股票池等權與 TRTEJ。
 - 2024 年中以後，TRTEJ 則大幅上升，而策略大致持平。TRTEJ 在 OOS 最後一年追上 v0-EW 策略。這與超額報酬拆解的結論一致：OOS 中，策略相對大盤的優勢縮小，主要來自大盤變強（TRTEJ 黑色細線大幅上升）。
 
-![OOS 回撤](img/oos_drawdown.png)
+<p align="center">
+  <img src="img/oos_drawdown.png" alt="OOS 回撤" width="1000">
+</p>
 
 #### 解讀
 - 4 個策略的最大回撤都發生在 2020 年 3 月的疫情急跌，深度 25.6%–29.5%。說明只做多的策略無法避開市場的系統性急跌。
@@ -219,7 +223,9 @@
 ```
 
 ### 3.6 累積 Rank IC
-![累積 Rank IC](img/cumulative_ic.png)
+<p align="center">
+  <img src="img/cumulative_ic.png" alt="累積 Rank IC" width="1200">
+</p>
 
 #### 解讀
 - 多數因子在 OOS 仍有正的預測能力。獲利（A0）、價值（B1）、動能（C0）、風險（D1）等勝者因子，累積 IC 在 OOS 持續上升，但是斜率大多比 IS 平緩。與平均 IC 的比較一致。

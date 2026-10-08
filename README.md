@@ -1,6 +1,8 @@
 # 因子研究流程 
 
-![Factor Research Process](img/factor-research-process.png)
+<p align="center">
+  <img src="img/factor-research-process.png" alt="Factor Research Process" width="1042">
+</p>
 
 | Layer | Responsibility |
 |---|---|
