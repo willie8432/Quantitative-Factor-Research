@@ -18,8 +18,6 @@
 - **Factor Computation**
 - **Single-Factor Testing**
 
-
-
 ## 3. Data & Setup
 
 | | |
