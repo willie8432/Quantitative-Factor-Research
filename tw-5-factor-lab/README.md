@@ -15,7 +15,7 @@
 | 報告 | 內容 |
 |---|---|
 | [01 Data Acquisition](01_Data_Acquisition.md) | 資料下載、財報日與換股日對齊（PIT）、樣本切分 |
-| [02 Single Factor Evaluation](02_Single_Factor_Evaluation.md) | IS 單因子檢定（相關性、Rank IC、十分位 LS、Spanning 迴歸）與勝者選擇 |
+| [02 Single Factor Evaluation](02_Single_Factor_Evaluation.md) | IS 單因子檢定（相關性、Rank IC、十分位 LS）與勝者選擇 |
 | [03 Backtesting](03_Backtesting.md) | 4 個策略的 OOS 回測績效、IS vs OOS 比較、超額報酬拆解、OOS 單因子檢定 |
 
 ## 3. Data & Setup
