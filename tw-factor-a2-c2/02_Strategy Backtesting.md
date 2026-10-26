@@ -98,7 +98,9 @@ winner-EW-noE1 (A0, B1, C0, D1)
 - M14 所有組合的 IS Sharpe 偏高，可能有一部分來自 dropB 在 IS 期間的整體優勢；M13 已經顯示 dropB 的 IS 優勢在 OOS 不成立。
 - 從 11 個候選中看最好的，本來就會高估；M14 的設計與基準又來自已看過的結果。
 
-
+- 拿掉 E1（winner-EW → noE1）後，兩段的 Sharpe、CAGR 都提高。
+- dropB 兩個版本的 OOS Sharpe 和 noE1 接近（1.745、1.711 vs 1.745），波動與 MDD 較低，但 OOS CAGR 少約 3.5–3.8 個百分點。
+- dropB 兩個版本的 IS Sharpe 明顯較高（約 2.13），但 OOS 降到和 noE1 相近，IS 的優勢在 OOS 大部分消失了。
 
 -----
 
