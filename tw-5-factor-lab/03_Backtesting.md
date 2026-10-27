@@ -40,7 +40,7 @@
 | winner-EW | A0、B1、C0、D1、E1 | 1/5 等權相加 | 回測 | 回測 |
 | v0-LGBM | A0、B0、C0、D0、E0 | LGBM | （訓練、不回測） | （每年 walk-forward 訓練）、回測 |
 | winner-LGBM | A0、B1、C0、D1、E1 | LGBM | （訓練、不回測） | （每年 walk-forward 訓練）、回測 |
-> (WIP) LGBM 設定說明
+
 
 ## 3. 回測績效數字
 
