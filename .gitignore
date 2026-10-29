@@ -1,4 +1,1 @@
 .DS_Store
-tools/.venv/
-tools/*.ttf
-__pycache__/
