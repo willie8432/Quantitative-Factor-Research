@@ -4,9 +4,10 @@
 
 # 只留 IS 
 
-## 1. 因子敏感度
+## 1. 因子預測力
 
-### 1.1 累積 Rank IC
+**使用累積 Rank IC，回答問題**
+
 <p align="center">
   <img src="img/cumulative_ic.png" alt="Figure 3. 累積 Rank IC" width="1200">
 </p>
@@ -22,14 +23,18 @@
 
 ---
 
-### 1.2 因子邊際效益
+### 2. 因子邊際效益
 
 **從 winner-EW 5 個因子拿掉一個，策略會變好還是變差？**
 - 每次拿掉 1 個因子，其餘 4 個仍然排名等權相加
 
 
 <p align="center">
-  <img src="img/table_marginal_contribution.png" alt="Table 1. 邊際報酬：拿掉因子各版本" width="1025">
+  <img src="img/table_marginal_contribution_is.png" alt="Table 2.1. winner-EW 邊際報酬 (IS)" width="1035">
+</p>
+
+<p align="center">
+  <img src="img/table_marginal_contribution_oos.png" alt="Table 2.2. winner-EW 邊際報酬 (OOS)" width="1035">
 </p>
 
 #### 推論
@@ -40,7 +45,7 @@
 - 拿掉 E1 在兩段中每期報酬、CAPM α、多因子 α 都上升，都可以提升績效表現。Sharpe 上升幅度是 6 個版本中最大的(Sharpe IS 1.8, Sharpe OOS 1.74)。
 - 換手率拿掉 A0、B1、C0 下降；而拿掉 D1、E1 上升。拿掉任何一個因子，持股重疊只有 53%-69%，因此現在的買賣規則，排名邊界對於因子組成非常敏感，拿掉一個因子就會改變將近一半的持股。
 
-## 2. 股票池敏感度
+## 3. 股票池敏感度
 
 **策略為含 E1 的 winner-EW（A0、B1、C0、D1、E1），不是現行的 noE1。**
 
@@ -64,7 +69,7 @@
 > 流動性 = 成交量 × 收盤價，取換股前 20 個交易日的中位數。市值、流動性的 6 個股票池各自在池內重算因子排名；均線 3 列沿用市值前 50% 的排名。
 >
 
-## 3. 買入賣出門檻敏感度 M15
+## 4. 買入賣出門檻敏感度 M15
 
 **winner-EW 的績效結果是否隨買入、賣出門檻平滑變化？每期要換手多少股票？每年交易成本吃掉多少報酬？**
 - 基準: 2%/10% 為目前實驗設定
@@ -93,7 +98,7 @@
 - 在 OOS 中所有格的波動都低於股票池等權（18.4）跟大盤 TRTEJ (19.4)。持股越多波動大致越低。
   - OOS 的波動全部高於 IS，表示 OOS 期間市場波動較大，主要不是門檻與持股差異造成。
 
-## 4. All in One 大禮包
+## 5. All in One 大禮包
 
 用更多的策略，確認股票池優勢。
 
