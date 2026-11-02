@@ -1,39 +1,37 @@
-# 策略敏感度調整
+# 策略敏感度分析
 
-## Overview
+## 1. Overview
 
 
-## 1. 因子預測力
+## 2. 因子預測力
 
-**使用累積 Rank IC，回答問題**
+**因子的預測力是穩定的，還是在某些時期開始失效？**
+- 每期 IC 累積相加，斜率等於平均 IC。斜率向上越陡代表預測力越強；持平代表該段期間沒有預測力；向下代表方向相反。
 
 <p align="center">
-  <img src="img/cumulative_ic.png" alt="Figure 3. 累積 Rank IC" width="1200">
+  <img src="img/cumulative_ic.png" alt="Figure 1. 每期累積 IC (2009-05 到 2026-08)" width="1200">
 </p>
 
-> Rank IC 以下期毛報酬計算（不含交易成本）；E0 與 E1 互為鏡像
-
 #### 解讀
-- 多數因子在 OOS 仍有正的預測能力。獲利（A0）、價值（B1）、動能（C0）、風險（D1）等勝者因子，累積 IC 在 OOS 持續上升，但是斜率比 IS 平緩。預測能力減弱，與平均 IC 解讀一致。
-- B0 的斜率在 OOS 變陡，PB 出現微弱預測力。
-- C1 在兩個期間都幾乎持平，幾乎沒有預測力。
-- E0、E1 規模因子在 IS 沒有方向，OOS 轉為大型股較佳。
-- **2025 到 2026 年多個因子同時轉弱**（由圖觀察）：殘差 PB（B1）、低 beta（D0）、低波動度（D1）的累積 IC 轉為下降，規模往大型股方向加速。推論，未經驗證：這段期間由大型高市值股主導，與價值、低風險、小型股方向相反。這與策略在 2024 年中以後資金累積持平、股票池落後大盤的解讀一致。準確時間點請見 [5.1 三年窗口滾動多因子曝險分析](03_Backtesting.md#51-三年窗口滾動多因子曝險分析)。
+- 獲利、價值、動能、風險等領域勝者因子（A0、B1、C0、D1）在 OOS 累積 IC 持續上升、斜率仍為正，表示仍有預測能力。
+- 規模因子在 IS 趨勢持平，沒有穩定的預測力。在 OOS 後期（2025 後）轉為大型股（E0）較佳。
+- B0 的斜率在 OOS 些微上升，出現微弱預測力。C1 在兩個期間都幾乎持平，沒有展現出預測力。
+- 2025 到 2026 年多個因子同時轉弱：B0、B1、D0、D1、E1 的累積 IC 斜率轉為下降。推論：這段期間便宜、低波動、小型股預測能力同時失效，目前期數少，無法判斷是短期反轉還是長期市場轉變。
 
 ---
 
-### 2. 因子邊際效益
+### 3. 因子邊際報酬
 
 **從 winner-EW 5 個因子拿掉一個，策略會變好還是變差？**
 - 每次拿掉 1 個因子，其餘 4 個仍然排名等權相加
 
 
 <p align="center">
-  <img src="img/table_marginal_contribution_is.png" alt="Table 2.1. winner-EW 邊際報酬 (IS)" width="1035">
+  <img src="img/table_marginal_contribution_is.png" alt="Table 3.1. winner-EW 邊際報酬 (IS)" width="1035">
 </p>
 
 <p align="center">
-  <img src="img/table_marginal_contribution_oos.png" alt="Table 2.2. winner-EW 邊際報酬 (OOS)" width="1035">
+  <img src="img/table_marginal_contribution_oos.png" alt="Table 3.2. winner-EW 邊際報酬 (OOS)" width="1035">
 </p>
 
 #### 推論
