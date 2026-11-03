@@ -47,7 +47,8 @@
 ## 4. 股票池比較
 
 **IS 期間，winner-EW 如果換一個股票池（市值範圍大小、改用流動性篩選、或加上均線條件），績效會不會不同？**
-- 原始設定基準是市值前 50%。
+- 基準：市值前 50%。
+- 策略：winner-EW （A0、B1、C0、D1、E1） 五因子排名等權；季換股；持股等權。
 
 <p align="center">
   <img src="img/table_universe_sensitivity_is.png" alt="Table 4.1. winner-EW 股票池比較 (IS)" width="1105">
@@ -87,11 +88,11 @@ MDD 是由單一事件決定，而 IS 期間均線股票池版本的 MDD 均發�
 - 成本: 手續費 0.1425%（雙邊）、證交稅 0.3%（賣出）、滑價 0.1%（雙邊）
 
 <p align="center">
-  <img src="img/table_buysell_performance.png" alt="Table. winner-EW 買入賣出敏感度：績效" width="870">
+  <img src="img/table_buysell_performance.png" alt="Table 5.1. winner-EW 買入賣出敏感度 (IS)：績效" width="495">
 </p>
 
 <p align="center">
-  <img src="img/table_buysell_trading.png" alt="Table. winner-EW 買入賣出敏感度：交易成本與持股" width="870">
+  <img src="img/table_buysell_trading.png" alt="Table 5.2. winner-EW 買入賣出敏感度 (IS)：成本與持股" width="495">
 </p>
 
 > 每期單邊換手率 =（買進金額 + 賣出金額）÷ 2 ÷ 換股前淨值
@@ -105,8 +106,7 @@ MDD 是由單一事件決定，而 IS 期間均線股票池版本的 MDD 均發�
   - 賣出緩衝區的作用是降低換手率與成本。但是放寬到 20% 以上時，損失的報酬多於省下的成本。且 5% 與 10% 在兩期間差異不顯著，專案設定維持目前的 10%。
 - 買入門檻，報酬在 IS 較不單調無規律。而 OOS 中則隨著買入門檻放寬表現降低 (例如賣出 10% 欄： 28.57%、23.41%、21.99%、20.08%、18.66%)，表現單調遞減。
   - 買入門檻 IS 中看不出規律，但是 OOS 中卻很清楚，最頂端的股票最有效。但同時，1% 因為每期持股數最少（12-14 檔），年化波動較高（IS 14.58%、OOS 16.48%）。
-- 在 OOS 中所有格的波動都低於股票池等權（18.4）跟大盤 TRTEJ (19.4)。持股越多波動大致越低。
-  - OOS 的波動全部高於 IS，表示 OOS 期間市場波動較大，主要不是門檻與持股差異造成。
+
 
 ## 5. All in One 大禮包
 
